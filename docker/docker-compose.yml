@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: nguyennt63
+      MINIO_ROOT_PASSWORD: nguyennt63
+    restart: always
+    command: server --console-address ":9001" /data
+
+  mongodb_master:
+    image: mongo:latest
+    container_name: mongodb_master
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nguyennt63
+      MONGO_INITDB_ROOT_PASSWORD: nguyennt63
+    ports:
+      - "27016:27017"
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3.9.7-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      RABBITMQ_DEFAULT_VHOST: nguyennt63
+    restart: always
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq_scripts:/opt/rabbitmq_scripts
+    command: >
+      sh -c "rabbitmq-server start && rabbitmqctl add_user user password &&
+             rabbitmqctl set_user_tags user administrator &&
+             rabbitmqctl set_permissions -p my_vhost user '.*' '.*' '.*' &&
+             rabbitmqctl stop && tail -f /dev/null"

@@ -1,0 +1,24 @@
+{
+    "folders": [
+        {
+            "name": "root",
+            "path": "./"
+        },
+        {
+            "name": "user_service",
+            "path": "./services/user_service"
+        },
+        {
+            "name": "message_service",
+            "path": "./services/message_service"
+        }
+    ],
+    "settings": {
+        "files.exclude": {},
+        "liveServer.settings.multiRootWorkspaceName": "root",
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.autopep8"
+        },
+        "python.formatting.provider": "none"
+    }   
+}
