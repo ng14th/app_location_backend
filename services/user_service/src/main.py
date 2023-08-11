@@ -62,7 +62,34 @@ def connector():
     print('Still alive')
     return custom_respone({"data" : ['OK']})
 
+from core.redis_client.sentinel_client import RedisSentinelClient
+import asyncio
+async def set_up_redis(): 
+    RedisClass = RedisSentinelClient
+    redis_cache = RedisClass()
+    await redis_cache.connect(
+        [('172.27.230.14',26379)],
+        "mymaster",
+        0,
+        "nguyennt63",
+        True
+    )
+    return redis_cache
+    
+async def test():
+    redis_cache = await set_up_redis()
+    print('1', await redis_cache.client.client_id())
+    print('2', await redis_cache.slave_client.client_id())
 
+    set_result = await redis_cache.client.set("test7","abc")
+    
+    
+    
+
+asyncio.run(test())    
+if __name__ == "__main__":
+    pass
+    
 
 
 

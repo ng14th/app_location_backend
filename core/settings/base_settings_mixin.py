@@ -59,7 +59,7 @@ class BaseSettingMixin(BaseSettings):
     @classmethod
     def set_up(cls, env_path):
         time_reconnect = 1
-        if USER_MODE != 'root':
+        if USER_MODE != 'nguyennt63':
             for i in range(0,5):
                 if '.localenv' in os.listdir(env_path):
                     cls.notify_connect_env('.localenv')

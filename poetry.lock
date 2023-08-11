@@ -24,6 +24,14 @@ typing-extensions = {version = ">=4", markers = "python_version < \"3.11\""}
 tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
 
 [[package]]
+name = "async-timeout"
+version = "4.0.2"
+description = "Timeout context manager for asyncio programs"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "atomicwrites"
 version = "1.4.1"
 description = "Atomic file writes."
@@ -638,6 +646,21 @@ python-versions = ">=3.8"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "redis"
+version = "4.6.0"
+description = "Python client for Redis database and key-value store"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+async-timeout = {version = ">=4.0.2", markers = "python_full_version <= \"3.11.2\""}
+
+[package.extras]
+hiredis = ["hiredis (>=1.0.0)"]
+ocsp = ["cryptography (>=36.0.1)", "pyopenssl (==20.0.1)", "requests (>=2.26.0)"]
+
+[[package]]
 name = "rich"
 version = "13.5.2"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
@@ -734,11 +757,12 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "1affcaaab267f60053f27469c2f1e6a879efd539b792f3fe2bb4d4f40790b38f"
+content-hash = "40764475710058711e35ce5d404d5cfaa18f1048265f67ccc3a0cb86b6d939d2"
 
 [metadata.files]
 amqp = []
 asgiref = []
+async-timeout = []
 atomicwrites = []
 attrs = []
 bcrypt = []
@@ -782,6 +806,7 @@ pymongo = []
 pytest = []
 python-dateutil = []
 python-dotenv = []
+redis = []
 rich = []
 six = []
 typing-extensions = []

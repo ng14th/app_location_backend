@@ -20,5 +20,10 @@
             "editor.defaultFormatter": "ms-python.autopep8"
         },
         "python.formatting.provider": "none"
-    }   
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python"
+        ]
+    }
 }

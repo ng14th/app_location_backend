@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from src.database.mongodb.mixins.mongodb_mixins import MongoCreateUpdateMixin
-from src.database.mongodb.mongo import umongo_cnx
+from core.database.mongodb.mixins.mongodb_mixins import MongoCreateUpdateMixin
+from core.database.mongodb.mongo import umongo_cnx
 from umongo import fields, EmbeddedDocument
 
 @umongo_cnx.register
